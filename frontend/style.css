@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #4361ee;
-    --secondary-color: #3f37c9;
-    --success-color: #4cc9f0;
-    --danger-color: #f72585;
+    --primary-color: #0066cc; /* Azul más profesional */
+    --secondary-color: #004b99; /* Azul oscuro */
+    --success-color: #28a745; /* Verde para acciones exitosas */
+    --danger-color: #dc3545; /* Rojo para errores */
     --light-color: #f8f9fa;
     --dark-color: #212529;
     --gray-color: #6c757d;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
   }
   
@@ -19,15 +19,16 @@
   
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
+    background-color: #f4f6f9;
     color: var(--dark-color);
     line-height: 1.6;
     padding: 0;
+    font-size: 1rem;
   }
   
   .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 20px;
   }
   
@@ -52,8 +53,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
   }
   
   .search-box {
@@ -68,7 +68,7 @@
   .search-box input {
     border: none;
     padding: 10px 15px;
-    min-width: 250px;
+    width: 250px;
     outline: none;
   }
   
@@ -122,7 +122,7 @@
   }
   
   .btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: var(--border-radius);
     border: none;
     cursor: pointer;
@@ -174,7 +174,7 @@
   
   .action-buttons {
     display: flex;
-    gap: 8px;
+    gap: 10px;
   }
   
   .pagination {
@@ -196,22 +196,23 @@
       flex-direction: column;
       align-items: stretch;
     }
-    
+  
     .search-box {
       width: 100%;
     }
-    
+  
     .search-box input {
       width: 100%;
     }
-    
+  
     th, td {
       padding: 8px 10px;
       font-size: 0.9rem;
     }
-    
+  
     .action-buttons {
       flex-direction: column;
       gap: 5px;
     }
   }
+  
