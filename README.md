@@ -23,3 +23,10 @@ Este proyecto es un sistema CRUD basico usando:
 - fnm list (Ver la lista de tus versiones de node)
 - fnm use 22.11.0 (Usar la version correspondiente)
 - node -v (Ver la version actual de node que estas usando)
+
+## Montar el sistema
+
+-git clone https://github.com/AdrianMC-2004/CRUD.git
+- npm install (instala todos los paquetes necesarios)
+- cd backend
+- node server.js (ejecutar el servidor con sqlite3)
