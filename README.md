@@ -23,3 +23,10 @@ Este proyecto es un sistema CRUD basico usando:
 - fnm list (Ver la lista de tus versiones de node)
 - fnm use 22.11.0 (Usar la version correspondiente)
 - node -v (Ver la version actual de node que estas usando)
+
+## Instalar paquetes y dependencias
+
+- npm install
+- npm install express@^5.1.0
+- npm install cors@^2.8.5
+- npm install sqlite3@^5.1.7
