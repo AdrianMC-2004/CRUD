@@ -3,31 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD de Usuarios</title>
+  <title>Gestión de Usuarios | Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Lista de Usuarios</h1>
-  <table id="usuariosTable">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <br>
-  <!-- Botón para redirigir a otra página (insertar.html) donde se podrán agregar nuevos usuarios -->
-  <button onclick="window.location.href='insertar.html'">Insertar Nuevo Usuario</button>
+  <div class="container">
+    <header class="header">
+      <h1><i class="fas fa-users-cog"></i> Gestión de Usuarios</h1>
+      <p>Administra los usuarios del sistema</p>
+    </header>
 
-  <!-- Script para usar Axios (biblioteca para hacer solicitudes HTTP desde el frontend) -->
+    <div class="toolbar">
+      <button class="btn btn-primary" onclick="window.location.href='insertar.html'">
+        <i class="fas fa-user-plus"></i> Nuevo Usuario
+      </button>
+      <div class="search-box">
+        <input type="text" placeholder="Buscar usuarios...">
+        <button class="btn-search"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-responsive">
+        <table id="usuariosTable">
+          <thead>
+            <tr>
+              <th>ID <i class="fas fa-sort"></i></th>
+              <th>Nombre <i class="fas fa-sort"></i></th>
+              <th>Correo <i class="fas fa-sort"></i></th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Datos se cargarán aquí -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="btn btn-outline"><i class="fas fa-chevron-left"></i></button>
+      <span class="page-info">Página 1 de 5</span>
+      <button class="btn btn-outline"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-  <!-- Archivo JS personalizado para manejar la lógica de la página (mostrar usuarios, etc.) -->
   <script src="script.js"></script>
 </body>
 </html>

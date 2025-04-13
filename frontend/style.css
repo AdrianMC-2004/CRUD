@@ -1,31 +1,217 @@
-body {
-    font-family: Arial, sans-serif;
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: red;
+  }
+  
+  .header {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    color: var(--gray-color);
+    font-size: 1.1rem;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .search-box input {
+    border: none;
+    padding: 10px 15px;
+    min-width: 250px;
+    outline: none;
+  }
+  
+  .btn-search {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .btn-search:hover {
+    background: var(--secondary-color);
+  }
+  
+  .card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
   }
   
   table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  table, th, td {
-    border: 1px solid black;
+    margin-bottom: 20px;
   }
   
   th, td {
-    padding: 10px;
+    padding: 12px 15px;
     text-align: left;
+    border-bottom: 1px solid #e0e0e0;
   }
   
-  button {
-    padding: 10px;
-    margin: 5px;
+  th {
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+  
+  tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .btn {
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    border: none;
     cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
   
-  form {
-    max-width: 400px;
-    margin: 20px auto;
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
   }
   
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--gray-color);
+    color: var(--gray-color);
+  }
+  
+  .btn-outline:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+  
+  .btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #d1146a;
+  }
+  
+  .btn-success {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: #3ab4d9;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .page-info {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .toolbar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .search-box {
+      width: 100%;
+    }
+    
+    .search-box input {
+      width: 100%;
+    }
+    
+    th, td {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
