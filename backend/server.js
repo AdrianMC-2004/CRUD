@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const createUsuario = require('./create');
 const deleteUsuario = require('./delete');
@@ -8,7 +9,10 @@ const updateUsuario = require('./update');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+
+app.use(cors()); // Habilita CORS
+app.use(bodyParser.json()); // Para procesar JSON
+
 
 // Obtener todos los usuarios
 app.get('/api/usuarios', (req, res) => {
