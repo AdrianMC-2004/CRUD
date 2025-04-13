@@ -13,4 +13,21 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 });
 
+// Crear tabla si no existe
+db.serialize(() => {
+  db.run(`
+    CREATE TABLE IF NOT EXISTS usuarios (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nombre TEXT NOT NULL,
+      correo TEXT NOT NULL
+    )
+  `, (err) => {
+    if (err) {
+      console.error('Error al crear la tabla usuarios', err.message);
+    } else {
+      console.log('Tabla "usuarios" lista');
+    }
+  });
+});
+
 module.exports = db;
