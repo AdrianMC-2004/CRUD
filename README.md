@@ -26,7 +26,4 @@ Este proyecto es un sistema CRUD basico usando:
 
 ## Instalar paquetes y dependencias
 
-- npm install
-- npm install express@^5.1.0
-- npm install cors@^2.8.5
-- npm install sqlite3@^5.1.7
+- npm install (instala todos los paquetes necesarios)
