@@ -1,30 +1,32 @@
-// Funciones básicas del CRUD
 function insertar() {
     const nombre = document.getElementById('nombre').value.trim();
     const correo = document.getElementById('correo').value.trim();
     
-    if (!nombre || !correo) return alert('Complete todos los campos');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return alert('Correo inválido');
+    if (!nombre || !correo) {
+        alert('Complete todos los campos');
+        return false;
+    }
 
-    const usuario = {
-        id: Date.now(), // ID único
-        nombre,
-        correo
-    };
+    if (!validarEmail(correo)) {
+        alert('Ingrese un correo válido');
+        return false;
+    }
 
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    usuarios.push(usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    
+    // guardar mensaje
+    guardarUsuario({nombre, correo});
     alert('Usuario registrado!');
     limpiarFormulario();
+    
+    // actualizar tabla 
     actualizarTabla();
+    setTimeout(() => window.location.href = 'index.html', 1000);
+    return false;
 }
 
 function actualizarTabla() {
+    // obtener usuarios de localStorage o array vacío
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
     const tbody = document.querySelector('#usuariosTable tbody');
-    
     if (tbody) {
         tbody.innerHTML = usuarios.map(usuario => `
             <tr>
@@ -32,6 +34,7 @@ function actualizarTabla() {
                 <td>${usuario.nombre}</td>
                 <td>${usuario.correo}</td>
                 <td>
+                    <button onclick="editarUsuario(${usuario.id})">Editar</button>
                     <button onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
                 </td>
             </tr>
@@ -39,13 +42,38 @@ function actualizarTabla() {
     }
 }
 
-// Inicialización
+// validar formato de email
+function validarEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// guardar usuario 
+function guardarUsuario(usuario) {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    usuario.id = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
+    usuarios.push(usuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+}
+
+// limpiar campos
+function limpiarFormulario() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('correo').value = '';
+}
+
+//cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+    // configurar submit 
     const form = document.getElementById('formUsuario');
-    if (form) form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        insertar();
-    });
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            insertar();
+        });
+    }
     
-    if (document.getElementById('usuariosTable')) actualizarTabla();
+    // si esta la tabla cargar datos al iniciar
+    if (document.getElementById('usuariosTable')) {
+        actualizarTabla();
+    }
 });
