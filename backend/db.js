@@ -36,8 +36,8 @@ db.serialize(() => {
       console.log(`🔍 Total de usuarios en la tabla: ${row.total}`);
 
       if (row.total === 0) {
-        const nombre = 'Juan Pérez';
-        const correo = 'juan@example.com';
+        const nombre = 'Adrian Prueba 123';
+        const correo = 'adriah@senati.pe';
 
         db.run(
           'INSERT INTO usuarios (nombre, correo) VALUES (?, ?)',
