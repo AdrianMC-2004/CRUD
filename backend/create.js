@@ -1,53 +1,51 @@
-// Insertar nuevo usuario
+// Funciones básicas del CRUD
 function insertar() {
-    // Obtener y limpiar datos del formulario
     const nombre = document.getElementById('nombre').value.trim();
     const correo = document.getElementById('correo').value.trim();
     
-    // Validar campos requeridos
-    if (!nombre || !correo) {
-        alert('Por favor complete todos los campos');
-        return false;
-    }
+    if (!nombre || !correo) return alert('Complete todos los campos');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return alert('Correo inválido');
 
-    // Validar formato de email
-    if (!validarEmail(correo)) {
-        alert('Ingrese un correo electrónico válido');
-        return false;
-    }
+    const usuario = {
+        id: Date.now(), // ID único
+        nombre,
+        correo
+    };
 
-    // Guardar usuario y redirigir
-    guardarUsuario({nombre, correo});
-    alert('Usuario registrado!');
-    limpiarFormulario();
-    setTimeout(() => window.location.href = 'index.html', 1000);
-    return false;
-}
-
-// Validar formato de email con expresión regular
-function validarEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// Guardar en localStorage
-function guardarUsuario(usuario) {
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    usuario.id = usuarios.length + 1; // ID autoincremental
     usuarios.push(usuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    
+    alert('Usuario registrado!');
+    limpiarFormulario();
+    actualizarTabla();
 }
 
-// Limpiar campos del formulario
-function limpiarFormulario() {
-    document.getElementById('nombre').value = '';
-    document.getElementById('correo').value = '';
+function actualizarTabla() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const tbody = document.querySelector('#usuariosTable tbody');
+    
+    if (tbody) {
+        tbody.innerHTML = usuarios.map(usuario => `
+            <tr>
+                <td>${usuario.id}</td>
+                <td>${usuario.nombre}</td>
+                <td>${usuario.correo}</td>
+                <td>
+                    <button onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
+                </td>
+            </tr>
+        `).join('');
+    }
 }
 
-// Evento submit del formulario
+// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('formUsuario');
-    form?.addEventListener('submit', (e) => {
+    if (form) form.addEventListener('submit', (e) => {
         e.preventDefault();
         insertar();
     });
+    
+    if (document.getElementById('usuariosTable')) actualizarTabla();
 });
