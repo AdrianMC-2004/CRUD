@@ -26,7 +26,6 @@ db.serialize(() => {
 
     console.log('✅ Tabla "usuarios" lista');
 
-    // Verificar si la tabla está vacía
     db.get('SELECT COUNT(*) AS total FROM usuarios', (err, row) => {
       if (err) {
         console.error('❌ Error al contar usuarios:', err.message);
