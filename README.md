@@ -12,7 +12,6 @@ Este proyecto es un sistema CRUD basico usando:
 ## Requisitos
 
 - **Node.js v22.11.0**
-- **MySQL**
 
 ---
 
