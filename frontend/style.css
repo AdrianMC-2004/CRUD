@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #0066cc; /* Azul más profesional */
-    --secondary-color: #004b99; /* Azul oscuro */
-    --success-color: #28a745; /* Verde para acciones exitosas */
-    --danger-color: #dc3545; /* Rojo para errores */
+    --primary-color: #0066cc;
+    --secondary-color: #004b99;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
     --light-color: #f8f9fa;
     --dark-color: #212529;
     --gray-color: #6c757d;
