@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 const dbPath = path.resolve(__dirname, 'usuarios.db');
 
 const db = new sqlite3.Database(dbPath, (err) => {
+=======
+
+const sqlite3 = require('sqlite3').verbose();
+
+const path = require('path');
+
+
+const dbPath = path.resolve(__dirname, 'usuarios.db');
+
+
+const db = new sqlite3.Database(dbPath, (err) => {
+  
+>>>>>>> feature/update
   if (err) {
     console.error('❌ Error al conectar con la base de datos:', err.message);
   } else {
@@ -11,6 +25,10 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/update
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS usuarios (
@@ -19,9 +37,37 @@ db.serialize(() => {
       correo TEXT NOT NULL
     )
   `, (err) => {
+<<<<<<< HEAD
     if (err) {
       console.error('❌ Error al crear la tabla "usuarios":', err.message);
       return;
+=======
+    
+    if (err) {
+      console.error('Error al crear la tabla usuarios', err.message);
+    } else {
+      console.log('Tabla "usuarios" lista'); 
+
+      
+      db.get('SELECT COUNT(*) AS total FROM usuarios', (err, row) => {
+        if (err) {
+          console.error('Error al contar usuarios:', err.message); 
+        } else if (row.total === 0) {  
+          
+          db.run(
+            'INSERT INTO usuarios (nombre, correo) VALUES (?, ?)', 
+            ['Juan Pérez', 'juan@example.com'],  
+            function (err) {
+              if (err) {
+                console.error('Error al insertar usuario por defecto:', err.message); 
+              } else {
+                console.log(`Usuario por defecto insertado con ID ${this.lastID}`);
+              }
+            }
+          );
+        }
+      });
+>>>>>>> feature/update
     }
 
     console.log('✅ Tabla "usuarios" lista');
@@ -54,4 +100,8 @@ db.serialize(() => {
   });
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/update
 module.exports = db;
