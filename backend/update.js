@@ -1,4 +1,4 @@
-//Funcion para actualizar un registro
+
 const db = require('./db');
 
 function updateUsuario(id, nombre, correo, callback) {
