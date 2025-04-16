@@ -1,4 +1,4 @@
-const db = require('./db'); // Asegúrate de que tienes el archivo db.js con la conexión SQLite
+const db = require('./db'); 
 
 function createUsuario(nombre, correo, callback) {
   const query = 'INSERT INTO usuarios (nombre, correo) VALUES (?, ?)';
